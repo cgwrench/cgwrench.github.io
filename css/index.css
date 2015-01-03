@@ -1,0 +1,158 @@
+@charset "utf-8";
+
+/* Layout */
+
+*,
+*::before,
+*::after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main p {
+    max-width: 480px;
+}
+
+/* TODO Responsive breakpoints. */
+
+/* Typography - TODO Host fonts locally. */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 100;
+    src: local('Lato Hairline'), local('Lato-Hairline'), url(http://fonts.gstatic.com/s/lato/v11/boeCNmOCCh-EWFLSfVffDg.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Lato Light'), local('Lato-Light'), url(http://fonts.gstatic.com/s/lato/v11/KT3KS9Aol4WfR6Vas8kNcg.woff) format('woff');
+}
+
+body {
+    color: #fff;
+    font: 300 1.3em/1.45em Lato, sans-serif;
+    background: none repeat scroll 0% 0% #37a096;
+}
+
+header > h1 {
+    font: 100 4.5em/1em Lato, sans-serif;
+    letter-spacing: -2px;
+    margin: 0.1em auto;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+header > h1 > strong {
+    font-weight: 100;
+    color: #fff;
+}
+
+main {
+    text-align: justify;
+}
+
+header > h1 > strong,
+main p,
+footer {
+    text-shadow: 1px 1px 2px #000, 0px 0px 0px #FFF;
+}
+
+footer {
+    text-align: center;
+}
+
+::selection {
+    background-color: #fff;
+    color: #37a096;
+    text-shadow: none;
+}
+
+::-moz-selection {
+    background: #fff;
+    color: #37a096;
+    text-shadow: none;
+}
+
+/* Hyperlinks */
+a,
+a:link,
+a:visited {
+    color: #ffc40d;
+    text-decoration: none;
+    -webkit-transition: color 0.2s ease-in 0s;
+    -moz-transition: color 0.2s ease-in 0s;
+    -o-transition: color 0.2s ease-in 0s;
+    -ms-transition: color 0.2s ease-in 0s;
+    transition: color 0.2s ease-in 0s;
+}
+
+a:hover {
+    color: #da532c;
+    text-decoration: underline;
+}
+
+a:focus,
+a:active {
+    color: #e3a21a;
+    text-decoration: underline;
+}
+
+/* Print styles. Inlined to avoid an additional HTTP request.
+   Credit to http://html5boilerplate.com/ */
+
+@media print {
+    *,
+    *::before,
+    *::after {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    header > h1 {
+        font-size: 4em;
+    }
+
+    body,
+    main p {
+        max-width: none;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+    }
+}
