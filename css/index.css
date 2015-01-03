@@ -34,13 +34,20 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    /* Fix for ugly IE11 flexbox layout issues: it appears that IE11 struggles 
+       to render flexbox layouts correctly if a min-height is, but a height 
+       is not, specified on a flex container (assuming a flex direction of 
+       column). See https://connect.microsoft.com/IE/feedback/details/802625/ 
+       for a bug report regarding this issue. This fix was suggested somewhere 
+       deep in the comment trail on this Modernizr issue 
+       https://github.com/Modernizr/Modernizr/issues/1301. */
+    -ms-flex-preferred-size: auto;
 }
 
 main p {
     max-width: 480px;
 }
-
-/* TODO Responsive breakpoints. */
 
 /* Typography - TODO Host fonts locally. */
 @font-face {
@@ -68,6 +75,7 @@ header > h1 {
     letter-spacing: -2px;
     margin: 0.1em auto;
     color: rgba(255, 255, 255, 0.4);
+    word-break: break-word; /* Non-standard for webkit browsers. */
 }
 
 header > h1 > strong {
@@ -79,9 +87,7 @@ main {
     text-align: justify;
 }
 
-header > h1 > strong,
-main p,
-footer {
+header > h1 > strong {
     text-shadow: 1px 1px 2px #000, 0px 0px 0px #FFF;
 }
 
@@ -99,6 +105,17 @@ footer {
     background: #fff;
     color: #37a096;
     text-shadow: none;
+}
+
+@media screen and (max-width: 430px) {
+    header > h1 {
+        font-size: 3.25em;
+    }
+
+    p {
+        font-size: 0.9em;
+        line-height: 1.4em;
+    }
 }
 
 /* Hyperlinks */
